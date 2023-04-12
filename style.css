@@ -1,0 +1,26 @@
+body {
+  overflow-x: hidden;
+  margin: 0px;
+  font-family: monospace;
+  color: white;
+  height: 100vh;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#Cursor {
+  display: none;
+  position: fixed;
+  border: 5px solid white;
+  border-radius: 50%;
+  top: 50%;
+  z-index: 1;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25px;
+  height: 25px;
+}
