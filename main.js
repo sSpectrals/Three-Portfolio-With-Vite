@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js';
-
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 
 
 
@@ -12,7 +12,7 @@ document.body.appendChild(renderer.domElement);
 const Scene = new THREE.Scene();
 
 Scene.background = new THREE.Color(0x000000);
-const loader = new GLTFLoader();
+const GLTFloader = new GLTFLoader();
 
 
 
@@ -67,15 +67,19 @@ document.addEventListener('click', function(event) {
 document.body.style.cursor = 'auto';
 
 
-loader.load("/Full_Desk_1.0.glb" , function ( glb)
-{
-  const Table2 = glb.scene;  
-  Table2.scale.set(1,1,1);
-  Table2.position.set(0, -1, -0.6);
-  Table2.rotation.y = -Math.PI/2;
-  Scene.add( Table2 );
 
- 
+const DracoLoader = new DRACOLoader();
+DracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+DracoLoader.setDecoderConfig({type: 'js'});
+GLTFloader.setDRACOLoader(DracoLoader);
+
+GLTFloader.load("/Desk_Compressed.glb" , function ( glb)
+{
+  const Desk = glb.scene;  
+  Desk.scale.set(1,1,1);
+  Desk.position.set(0, -1, -0.6);
+  Desk.rotation.y = -Math.PI/2;
+  Scene.add( Desk );
 
 },  (xhr) => {
   console.log(`${(xhr.loaded / xhr.total) * 100}% loaded`);
