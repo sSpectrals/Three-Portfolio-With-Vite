@@ -73,7 +73,7 @@ DracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5
 DracoLoader.setDecoderConfig({type: 'js'});
 GLTFloader.setDRACOLoader(DracoLoader);
 
-GLTFloader.load("/Desk_Compressed.glb" , function ( glb)
+GLTFloader.load("/Full_Desk.glb" , function ( glb)
 {
   const Desk = glb.scene;  
   Desk.scale.set(1,1,1);
